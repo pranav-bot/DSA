@@ -1,28 +1,26 @@
 //Doesn't work
 public class JumpGame {
     public static void main(String[] args) {
-        int[] a={1,1,2};
+        int[] a={2,3,1,1,4};
         System.out.println(JumpGame(a));
 
 
     }
-    static boolean JumpGame(int[] nums){
-        int[] a={0};
-        int apointer=0;
-        int steps_remaining=nums.length;
-        int i=0;
-        while(i!= nums[1]){
-            steps_remaining=steps_remaining-nums[nums[i]+1];
-            i=nums[nums[i]];
+    static int JumpGame(int[] nums){
+        if(nums.length==1){
+            return 0;
         }
-        if(nums==a){
-            return true;
+        int i=nums[0]+1;
+        int step =i;
+        int count =1;
+        while(step<=nums.length){
+            if(nums[step]==0){
+                break;
+            }
+            step = step+nums[step];
+            count++;
         }
-        else if(steps_remaining>0){
-            return false;
-        }
-        else{
-            return true;
-        }
+        return count-1;
+
     }
 }

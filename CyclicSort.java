@@ -1,17 +1,13 @@
 import java.util.Arrays;
 
-public class findDuplicate {
+public class CyclicSort {
     public static void main(String[] args) {
-        int[] a = {1,3,4,2,2};
-        System.out.println(findDuplicates(a));
-
+        int[] arr = {1,2,2,3,4,5,3,1};
+        cyclicSort(arr);
+        System.out.println(Arrays.toString(arr));
+        
     }
-    public static int findDuplicates(int[] nums){
-        cycleSort(nums);
-        return nums[nums.length-1];
-
-    }
-    public static void cycleSort(int[] arr){
+    public static void cyclicSort(int[] arr){
         int i =0;
         while(i<arr.length){
             int correct = arr[i] -1;

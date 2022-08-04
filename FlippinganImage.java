@@ -9,17 +9,14 @@ public class FlippinganImage {
 
     }
     static int[][] Flip(int[][] image){
-        int[][] ans= new int[image.length][image.length];
-        for(int row=0;row!=image.length;row++){
-            for(int col=0;col!=image.length;col++){
-                if(ans[row][col]==0){
-                    ans[row][col]=1;
-                }
-                else{
-                    ans[row][col]=0;
-                }
+        for(int[] row : image){
+            for(int i=0;i<(image[0].length+1)/2;i++){
+                int temp = row[i]^1;
+                row[i] = row[image[0].length-i-1]^1;
+                row[image[0].length-i-1] = temp;
             }
         }
-        return ans;
+        return image;
+
     }
 }

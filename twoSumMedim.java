@@ -1,5 +1,3 @@
-import javax.sound.midi.MidiChannel;
-
 public class twoSumMedim {
     public static void main(String[] args) {
         

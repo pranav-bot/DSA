@@ -1,8 +1,12 @@
+import java.util.Arrays;
+
 public class FindFirstAndLastPositionOfElementInSortedArray {
     public static void main(String[] args) {
+        int[] nums = {1,2,3,4,5,6,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,8,9,9,9,9,9,9};
+        System.out.println(Arrays.toString(search(nums, 7)));
         
     }
-    public int[] search(int[] nums, int target){
+    public static int[] search(int[] nums, int target){
         int start = 0; 
         int end = nums.length-1;
         int mid = 0; 
