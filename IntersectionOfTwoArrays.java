@@ -1,11 +1,16 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class IntersectionOfTwoArrays {
     public static void main(String[] args) {
-        int[] a = {1,2,2,1};
-        int[] b = {2,2};
-        int[] c = intersection(a, b);
+        int[] a = {9,4,5,8,4};
+        int[] b = {4,9,5,4};
+        int[] c = intersection(a,b);
         System.out.println(Arrays.toString(c));
+        int[] d = new int[2];
+    
+        d[0]=1;
+        System.out.println(Arrays.toString(d));
     }
     public static int[] intersection(int[] nums1, int[] nums2) {
         boolean[] a = new boolean[nums2.length];
@@ -18,21 +23,20 @@ public class IntersectionOfTwoArrays {
                     }
                 }
             }
-            int counter=0;
+            ArrayList<Integer> al = new ArrayList<>();
             for(int i=0;i!=a.length;i++){
                 if(a[i]==true){
-                    counter++;
+                    if(al.contains(nums2[i])){
+                        continue;
+                    }
+                    al.add(nums2[i]);
+                    a[i]=false;
                 }
             }
-            int[] a2 = new int[counter];
-            for(int i=0;i!=a2.length;i++){
-                for(int j=0;j!=a.length;j++){
-                    if(a[j]==true){
-                        a2[i]=nums2[j];
-                        a[j] = false;
-                        break;
-                    }
-                }
+            int[] a2 = new int[al.size()];
+            int j=0;
+            for(int i:al){
+                a2[j++]=i;
             }
             return a2;
         }
@@ -44,24 +48,23 @@ public class IntersectionOfTwoArrays {
                     }
                 }
             }
-            int counter =0;
-            for(int i=0;i!=b.length;i++){
-                if(b[i]==true){
-                    counter++;
+           ArrayList<Integer> bl = new ArrayList<>();
+           for(int i=0;i!=b.length;i++){
+            if(b[i]==true){
+                if(bl.contains(nums1[i])){
+                    continue;
                 }
+                bl.add(nums1[i]);
+                b[i] = false;
             }
-            int[] b2 = new int[counter];
-            for(int i=0;i!=b2.length;i++){
-                for(int j=0;j!=b.length;j++){
-                    if(b[j]==true){
-                        b2[i]=nums1[j];
-                        b[j] = false;
-                        break;
-                    }
-                }
-            }
+           }
+           int[] b2 = new int[bl.size()];
+           int j=0;
+           for(int i:bl){
+            b2[j++] = i;
+           }
+           return b2;
+
         } 
-        int[] temp = {0,1,2,3};
-        return temp;
     }
 }
