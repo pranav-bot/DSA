@@ -1,8 +1,11 @@
 public class test {
     public static void main(String[] args) {
-        int a  = 4;
-        int b = 5;
-        System.out.println(Integer.toBinaryString(b));
+        linkedlist list = new linkedlist();
+
+        list.insertFirst(5);
+        list.insertFirst(10);
+        list.insertFirst(11);
+        list.Display();
         
     }
     

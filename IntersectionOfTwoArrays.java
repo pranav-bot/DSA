@@ -3,74 +3,65 @@ import java.util.Arrays;
 public class IntersectionOfTwoArrays {
     public static void main(String[] args) {
         int[] a = {1,2,2,1};
-        int[] b = {1,2};
-        System.out.println(Arrays.toString(intersection(a, b)));
+        int[] b = {2,2};
+        int[] c = intersection(a, b);
+        System.out.println(Arrays.toString(c));
     }
     public static int[] intersection(int[] nums1, int[] nums2) {
-        int m = nums1.length;
-        int n = nums2.length;
-        if (m > n) {
-            int tempp[] = nums1;
-            nums1= nums2;
-            nums2 = tempp;
- 
-            int temp = m;
-            m = n;
-            n = temp;
-        }
-        Arrays.sort(nums1);
-        int count=0;
-        for (int i = 0; i < n; i++) {
-            if (binarySearch(nums1, 0, m - 1, nums2[i]) != -1)
-            count=i;
-        }
-        int[] ans = new int[count];
-        for (int i = 0; i < n; i++) {
-            if (binarySearch(nums1, 0, m - 1, nums2[i]) != -1)
-            ans[i]=nums2[i];
-        }
-        return ans;
-    }
-
-    public static int commonNumbers(int[] nums1, int[] nums2){
-        int count =0;
-        for(int i=0;i!=nums1.length;i++){
-            for(int j=0; j!=nums2.length;j++){
-                if(nums1[i]==nums2[j]){
-                    count++;
-                    break;
-                }
-                if(j>0){
-                    if(nums2[j]==nums2[j-1]){
-                        count=count-1;
+        boolean[] a = new boolean[nums2.length];
+        boolean[] b = new boolean[nums1.length];
+        if(nums1.length>nums2.length){
+            for(int i=0;i!=nums2.length;i++){
+                for(int j=0;j!=nums1.length;j++){
+                    if(nums2[i]==nums1[j]){
+                        a[i]=true;
                     }
-                } 
-            }
-            if(i>0){{
-                if(nums1[i]==nums1[i-1]){
-                    count=count-1;
                 }
             }
+            int counter=0;
+            for(int i=0;i!=a.length;i++){
+                if(a[i]==true){
+                    counter++;
+                }
             }
-        
+            int[] a2 = new int[counter];
+            for(int i=0;i!=a2.length;i++){
+                for(int j=0;j!=a.length;j++){
+                    if(a[j]==true){
+                        a2[i]=nums2[j];
+                        a[j] = false;
+                        break;
+                    }
+                }
             }
-            return count;
-    }
-
-
-    public static int binarySearch(int[] arr,int target,  int start, int end){
-        while(start<=end){
-            int mid = start+ (end-start)/2;
-            if(arr[mid]>target){
-                end = mid-1;
-            }
-            else if (target>arr[mid]){
-                start= mid+1;
-            }
-            else{
-                return mid;
-            }
+            return a2;
         }
-        return -1;
+        else{
+            for(int i=0;i!=nums1.length;i++){
+                for(int j=0;j!=nums2.length;j++){
+                    if(nums1[i]==nums2[j]){
+                        b[i]=true;
+                    }
+                }
+            }
+            int counter =0;
+            for(int i=0;i!=b.length;i++){
+                if(b[i]==true){
+                    counter++;
+                }
+            }
+            int[] b2 = new int[counter];
+            for(int i=0;i!=b2.length;i++){
+                for(int j=0;j!=b.length;j++){
+                    if(b[j]==true){
+                        b2[i]=nums1[j];
+                        b[j] = false;
+                        break;
+                    }
+                }
+            }
+        } 
+        int[] temp = {0,1,2,3};
+        return temp;
     }
 }
