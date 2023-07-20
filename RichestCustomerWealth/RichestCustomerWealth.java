@@ -1,3 +1,4 @@
+
 //The logic here is to take a matrix of AxB
 //Then find the sum of all the elements in each row
 //And return the maximum value of sum of all the elements of ea
@@ -15,17 +16,19 @@ public class RichestCustomerWealth {
             }
         }
         System.out.println(richest(account));
+        in.close();
 
     }
-    static int richest(int[][] nums){
-        int max=0;
+
+    static int richest(int[][] nums) {
+        int max = 0;
         for (int row = 0; row != nums.length; row++) {
-            int sum=0;
+            int sum = 0;
             for (int col = 0; col != nums[row].length; col++) {
-                sum=sum+nums[row][col];
+                sum = sum + nums[row][col];
             }
-            if(sum>max){
-                max=sum;
+            if (sum > max) {
+                max = sum;
             }
         }
         return max;
