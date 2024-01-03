@@ -1,36 +1,33 @@
-import javax.swing.text.AbstractDocument.LeafElement;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class trash {
-    public static class TreeNode{
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(){}
-        TreeNode(int val) { this.val = val; }    
-        TreeNode(int val, TreeNode left, TreeNode right){
-            this.val = val;
-            this.left = left;
-            this.right = right;
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        ArrayList<Integer> arr = new ArrayList<>();
+        while (true) {
+            int i = in.nextInt();
+            if (i > 0) {
+                arr.add(i);
+            } else {
+                break;
+            }
         }
-}
-public static void main(String[] args) {
-    TreeNode root = new TreeNode();
-    root.val = -8;
-    root.left = new TreeNode(-6);
-    root.right = new TreeNode(7);
-    root.left.left = new TreeNode(6);
-    root.left.left.right = new TreeNode(5);
-    System.out.println(maxDepth(root));
+        processArray(arr);
 
-}
+    }
 
-public static int maxDepth(TreeNode root){
-    if(root==null){
-    return 0;
+    static void processArray(ArrayList<Integer> arr) {
+        for (int i = 0; i != arr.size(); i++) {
+            if (arr.get(i) < 0 && arr.get(i + 1) < 0) {
+                int sum = arr.get(i) + arr.get(i + 1);
+                arr.remove(i);
+                arr.remove(i);
+                arr.add(i, sum);
+            }
+        }
+        for (int i : arr) {
+            System.out.println(i);
+        }
     }
-    int left=maxDepth(root.left);
-    int right=maxDepth(root.right);
-    int maxheight=Math.max(left,right)+1;
-    return maxheight;
-    }
-    }
+}
