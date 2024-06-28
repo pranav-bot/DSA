@@ -1,6 +1,7 @@
 package DailyTemperatures;
 
 import java.util.Arrays;
+import java.util.Stack;
 
 public class DailyTemperatures {
     public static void main(String[] args) {
@@ -11,19 +12,16 @@ public class DailyTemperatures {
     }
 
     public static int[] dailyTemperatures(int[] temperatures) {
-        int[] ans = new int[temperatures.length];
-        for (int i = 0; i != temperatures.length; i++) {
-            int count = 1;
-            for (int j = i + 1; j != temperatures.length; j++) {
-                if (temperatures[i] < temperatures[j]) {
-                    ans[i] = count;
-                    break;
-                } else {
-                    count++;
-                }
-            }
+      int[] ans = new int[temperatures.length];
+      Stack<Integer> s = new Stack<>();
+      for(int i =  temperatures.length-1;i!=0;i--){
+        while (!s.empty() && temperatures[i]>=temperatures[s.peek()]) {
+            s.pop();
         }
-        return ans;
+        ans[i] = s.isEmpty()?0:s.peek()-1;
+        s.push(i);
+      }
+      return ans;
     }
 
 }
