@@ -74,4 +74,19 @@ public class MaximumAverageSubarrayI {
         return ans;
 
     }
+    public double findMaxAverage2(int[] nums, int k) {
+        int r=0,l=0;
+        double maxavg = Integer.MIN_VALUE;
+        double sum = 0;
+        while(r<nums.length){
+            sum += nums[r];
+            if(r-l+1==k){
+                maxavg = Math.max(maxavg, sum/4);
+                sum -= nums[l];
+                l++;
+            }
+            r++;
+        }
+        return maxavg;
+    }
 }

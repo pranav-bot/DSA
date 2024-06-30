@@ -6,11 +6,22 @@ public class FindFirstPalindromicStringintheArray {
         System.out.println(firstPalindrome(words));
     } 
     public static String firstPalindrome(String[] words){
-       for (String word : words) {
-        int i=0;
-        int j = word.length()-1;    
+        for (String word : words) {
+            int i=0;
+            int j = word.length()-1;
+            boolean flag = true;
+            while (i!=word.length()-1 && j!=0) {
+                if(word.charAt(i)!=word.charAt(j)){
+                    flag=false;
+                    break;
+                }
+                i++;
+                j--;
+            }
+            if(flag==true){
+                return word;
+            }
         }
-
-    }ssasasa
-    sabdjkasdlk;
+        return "";
+    }
 }
