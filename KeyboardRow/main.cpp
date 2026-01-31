@@ -18,7 +18,7 @@ vector<string> findWords(vector<string>& words) {
         if(row1.find(lower[0])!=string::npos){
             row = row1;
         }
-        else if (row2.find(lower[0]!=string::npos)){
+        else if (row2.find(lower[0])!=string::npos){
             row = row2;
         }
         else{
